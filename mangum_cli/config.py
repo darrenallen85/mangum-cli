@@ -130,6 +130,8 @@ class Config:
             self.stack_name,
             "--capabilities",
             "CAPABILITY_IAM",
+            "--region",
+            self.region_name,
         ]
         res = subprocess.run(cmd, stdout=subprocess.PIPE)
         if not res:
@@ -146,6 +148,8 @@ class Config:
             self.stack_name,
             "--query",
             "Stacks[].Outputs",
+            "--region",
+            self.region_name,            
         ]
         res = subprocess.run(cmd, stdout=subprocess.PIPE)
         if res.returncode != 0:
@@ -187,6 +191,8 @@ class Config:
             "delete-stack",
             "--stack-name",
             self.stack_name,
+            "--region",
+            self.region_name,            
         ]
         res = subprocess.run(cmd, stdout=subprocess.PIPE)
         if not res:
